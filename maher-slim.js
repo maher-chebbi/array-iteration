@@ -141,7 +141,19 @@ square([1, 2, 3])
     (3) [1, 4, 9]
 Question 11
 
-function isArray(array) {}
+function isArray(array) {
+    if (Array.isArray(array)) { return true } else { return false }
+}
+undefined
+isArray(23)
+false
+isArray('hi')
+false
+isArray([1, 2])
+true
+
+
+
 Question 12
 
 function min(array) {
@@ -263,6 +275,8 @@ function multiplyBy(array, number) {
     return array
     multiplyBy([5, 3, 4], 2)
         (3) [10, 6, 8]
+
+
     Question 19
 
     function multiplyByIndex(array) {
@@ -339,3 +353,123 @@ function multiplyBy(array, number) {
         }
 
         Question 26;
+
+        function min(array) {
+            var min = array[0]
+            for (var i = 1; i < array.length; i++) {
+                if (array[i] < min) {
+                    min = array[i]
+                }
+            }
+            return min
+        }
+
+        function multiplyBySmallesty(array) {
+            z = min(array)
+            for (var i = 0; i < array.length; i++) {
+                array[i] = array[i] * z
+            }
+            return array
+        }
+        undefined
+        multiplyBySmallesty([2, 3, 4])
+            (3) [4, 6, 8]
+        multiplyBySmallesty([0, 1, 4])
+            (3) [0, 0, 0]
+
+
+        Question 27;
+
+        function joinArrays(array) {
+            var arr = []
+            for (var i = 0; i < array.length; i++) {
+                arr = arr.concat(array[i])
+            }
+            return arr
+        }
+        undefined
+        joinArrays([
+                [2, 3],
+                [2],
+                [3, 4]
+            ])
+            (5) [2, 3, 2, 3, 4]
+
+        Question 28;
+
+        function sumOddEven(array) {
+            var odd = 0
+            var even = 0
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] % 2 === 0) { even = even + array[i] } else { odd = odd + array[i] }
+            }
+            return [odd, even]
+        }
+        undefined
+        sumOddEven([1, 3, 2, 4])
+            (2) [4, 6]
+
+        Question 29;
+
+        function shortestOfMixed(array) {
+            var str = ''
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].length >= 0) {
+                    str = array[i]
+                    break
+                }
+            }
+            return str
+        }
+
+        undefined
+
+        function shortestOfMixed(array) {
+            var str = ''
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].length >= 0) {
+                    str = array[i]
+                    break
+                }
+            }
+            for (var j = 0; j < array.length; j++) {
+                if (array[j].length < str.length) {
+                    str = array[j]
+                }
+            }
+
+            return str
+        }
+
+        undefined
+        shortestOfMixed([4, 'too', 'three', 2, 'two'])
+        "too"
+        shortestOfMixed([4, 'too', '', 2, 'two'])
+        ""
+        shortestOfMixed([4, 'two', 'sdfsdgs', 2, 'too'])
+        "two"
+
+        Question 30;
+
+        function smallestOfMixed(array) {
+            var result = 0
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] >= 0) {
+                    result = array[i]
+                    break
+                }
+            }
+            for (var j = 0; j < array.length; j++) {
+                if (array[j] < result) {
+                    result = array[j]
+                }
+            }
+
+            return result
+        }
+
+        undefined
+        smallestOfMixed(['kj', 'jhjdhd'])
+        0
+        smallestOfMixed(['kj', 'jhjdhd', -1]) -
+            1
